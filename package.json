@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/stan900814/ui-wheel#readme",
   "dependencies": {
+    "src": "^1.1.2",
     "vue": "^2.6.11",
     "vue-hot-reload-api": "^2.3.4"
   },
