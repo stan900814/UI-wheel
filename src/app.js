@@ -3,6 +3,7 @@ import Button from './button'
 import Icon from './icon'
 import Buttongroup from './button-group'
 import chai from 'chai'
+import spies from 'chai-spies'
 
 Vue.component('g-button', Button)
 Vue.component('g-icon', Icon)
@@ -19,6 +20,7 @@ new Vue({
 
 //单元测试
 const expect = chai.expect
+chai.use(spies)
 {
     const Constructor = Vue.extend(Button)
     const vm = new Constructor({
@@ -78,4 +80,21 @@ const expect = chai.expect
     expect(order).to.eq('2')
     vm.$el.remove()
     vm.$destroy()
+}
+//click事件单元测试
+{
+    const Constructor = Vue.extend(Button)
+    const vm = new Constructor({
+        propsData: {
+            icon:'settings',
+        }
+    })
+    vm.$mount()
+    let spy = chai.spy(
+        function(){}
+    )
+    vm.$on('click', spy)
+    let button = vm.$el
+    button.click()
+    expect(spy).to.have.been.called()
 }
