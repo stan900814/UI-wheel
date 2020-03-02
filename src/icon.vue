@@ -1,7 +1,7 @@
 <template>
-    <svg class="g-icon">
-      <use :xlink:href="`#i-${name}`" />
-    </svg>
+  <svg class="g-icon">
+    <use :xlink:href="`#i-${name}`" />
+  </svg>
 </template>
 <script>
 export default {
