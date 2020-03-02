@@ -22,6 +22,7 @@ new Vue({
 const expect = chai.expect
 chai.use(spies)
 {
+    //测试按钮是否含有icon
     const Constructor = Vue.extend(Button)
     const vm = new Constructor({
         propsData: {
@@ -35,6 +36,7 @@ chai.use(spies)
     vm.$destroy()
 }
 {
+    //测试按钮loading状态
     const Constructor = Vue.extend(Button)
     const vm = new Constructor({
         propsData: {
@@ -49,6 +51,7 @@ chai.use(spies)
     vm.$destroy()
 }
 {
+    //测试SVG是否显示在正确位置
     const div = document.createElement('div')
     document.body.appendChild(div)
     const Constructor = Vue.extend(Button)
@@ -65,6 +68,7 @@ chai.use(spies)
     vm.$destroy()
 }
 {
+    //测试SVG是否显示在正确位置
     const div = document.createElement('div')
     document.body.appendChild(div)
     const Constructor = Vue.extend(Button)
