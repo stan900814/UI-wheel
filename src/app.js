@@ -2,12 +2,15 @@ import Vue from "vue"
 import Button from "./button"
 import Icon from "./icon"
 import Buttongroup from "./button-group"
+import Input from './input'
 import chai from "chai"
 import spies from "chai-spies"
 
 Vue.component("g-button", Button)
 Vue.component("g-icon", Icon)
 Vue.component("g-button-group", Buttongroup)
+Vue.component("g-input", Input)
+
 
 new Vue({
   el: "#app",
