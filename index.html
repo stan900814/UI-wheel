@@ -37,10 +37,11 @@
       <div class="box">
         <g-input style="margin-bottom:20px " value="张三"></g-input>
         <g-input style="margin-bottom:20px " value="李四" disabled></g-input>
-        <g-input style="margin-bottom:20px " value="王五" readyonly></g-input>
+        <g-input style="margin-bottom:20px " value="王五" readonly></g-input>
       </div>
       <div class="box">
         <g-input style="margin-bottom:20px " value="李" error="姓名不能少于两个字"></g-input>
+        <g-input value="王" @change="inputchange"></g-input>
       </div>
       <div class="box">
       <g-button>

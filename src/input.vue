@@ -1,6 +1,10 @@
 <template>
     <div class="wrapper" :class="{error}">
-        <input type="text" :value="value" :disabled="disabled" :readonly="readyonly">
+        <input type="text" :value="value" :disabled="disabled" :readonly="readonly"
+               @change="$emit('change',$event)"
+                @input="$emit('input',$event)"
+                @blur="$emit('blur',$event)"
+                @focus="$emit('focus',$event)">
         <template v-if="error">
             <icon name="error" class="icon-error"></icon>
             <span class="errorMessage">{{error}}</span>
@@ -23,9 +27,9 @@
                 type:Boolean,
                 default:false
             },
-            readyonly:{
+            readonly:{
                 type:Boolean,
-                default:false
+                default:true
             },
             error:{
                 type:String

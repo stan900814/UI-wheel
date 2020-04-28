@@ -3,8 +3,6 @@ import Button from "./button"
 import Icon from "./icon"
 import Buttongroup from "./button-group"
 import Input from './input'
-import chai from "chai"
-import spies from "chai-spies"
 
 Vue.component("g-button", Button)
 Vue.component("g-icon", Icon)
@@ -16,6 +14,11 @@ new Vue({
   el: "#app",
   data: {
     loading1: false
+  },
+  methods:{
+    inputchange(e){
+      console.log(e.target.value)
+    }
   }
 })
 
