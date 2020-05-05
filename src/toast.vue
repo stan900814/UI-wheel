@@ -1,0 +1,87 @@
+<template>
+  <div class="toast" ref="wrapper">
+    <slot></slot>
+    <div class="line" ref="line"></div>
+    <span class="close" v-if="closeButton" @click="onClickClose">{{closeButton.text}}</span>
+  </div>
+</template>
+
+<script>
+  export default {
+    name: "GuluToast",
+    props:{
+      autoClose:{ //是否自动关闭
+        type:Boolean,
+        default:true
+      },
+      autoCloseDelay:{//自动关闭延时
+        type:Number,
+        default: 3
+      },
+      closeButton:{ //是否有关闭按钮
+        type:Object,
+        default(){
+          return{
+            text:'关闭',callback:undefined //点击关闭触发回掉函数
+          }
+        }
+      },
+    },
+    mounted() {
+      this.updateStyle()
+      this.execAutoClose()
+    },
+    methods:{
+      execAutoClose(){
+        if(this.autoClose){
+          setTimeout(()=>{
+            this.close()
+          },this.autoCloseDelay*1000)
+        }
+      },
+      updateStyle(){ //获取高度
+        this.$nextTick(()=>{
+          this.$refs.line.style.height = `${this.$refs.wrapper.getBoundingClientRect().height}px`
+        })
+      },
+      close(){
+        this.$el.remove()
+        this.$destroy()
+      },
+      onClickClose(){
+        this.close()
+        if(this.closeButton&&typeof this.closeButton.callback ==='function'){
+          this.closeButton.callback(this)
+        }
+      }
+    }
+  }
+</script>
+
+<style scoped lang="scss">
+  $font-size:14px;
+  $toast-min-height:40px;
+  $toast-bg:rgb(0,0,0,0.75);
+  .toast{
+    font-size: $font-size;
+    min-height: $toast-min-height;
+    line-height: 1.8;
+    background: $toast-bg;
+    color: white;
+    display: flex;
+    align-items: center;
+    border-radius: 4px;
+    box-shadow: 0 0 3px rgba(0,0,0,0.5);
+    padding: 8px 16px;
+    position: fixed;top: 0;left: 50%;transform: translateX(-50%);
+  }
+  .line{
+    height: 100%;
+    border-left: 1px solid #666666;
+    margin-left: 16px;
+  }
+  .close{
+    padding-left: 16px;
+    flex-shrink: 0;
+  }
+</style>
