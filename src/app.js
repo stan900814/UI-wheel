@@ -20,31 +20,31 @@ Vue.component("g-icon", Icon)
 Vue.component("g-button-group", Buttongroup)
 Vue.component("g-input", Input)
 Vue.component("g-row", Row)
-Vue.component("g-col",Col)
-Vue.component("g-layout",Layout)
-Vue.component("g-header",Header)
-Vue.component("g-sider",Sider)
-Vue.component("g-footer",Footer)
-Vue.component("g-content",Content)
-Vue.component("g-toast",Toast)
+Vue.component("g-col", Col)
+Vue.component("g-layout", Layout)
+Vue.component("g-header", Header)
+Vue.component("g-sider", Sider)
+Vue.component("g-footer", Footer)
+Vue.component("g-content", Content)
+Vue.component("g-toast", Toast)
 
 new Vue({
   el: "#app",
   data: {
     loading1: false,
   },
-  mounted(){
-    this.$toast('测试toast',{
-      autoClose: false,
-      position:'middle',
-      closeButton: {
-        text:'测试',
-        callback:()=>{console.log('我是callback');}
-      }
-    })
-  },
-  methods:{
-
+  mounted() {},
+  methods: {
+    showToast() {
+      this.$toast('测试toast', {
+        autoClose: false,
+        position: 'middle',
+        closeButton: {
+          text: '测试',
+          callback: () => {console.log('我是callback');}
+        }
+      })
+    }
   }
 })
 
