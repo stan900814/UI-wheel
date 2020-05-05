@@ -1,5 +1,5 @@
 <template>
-  <div class="toast" ref="wrapper">
+  <div class="toast" ref="wrapper" :class="toastClass">
     <slot></slot>
     <div class="line" ref="line"></div>
     <span class="close" v-if="closeButton" @click="onClickClose">{{closeButton.text}}</span>
@@ -26,6 +26,20 @@
           }
         }
       },
+      position:{ //toast出现的位置
+        type:String,
+        default:'top',
+        validator:(value)=>{
+          return ['top','bottom','middle'].includes(value)
+        }
+      }
+    },
+    computed:{
+      toastClass(){
+        return{
+          [`position-${this.position}`]:true
+        }
+      }
     },
     mounted() {
       this.updateStyle()
@@ -73,7 +87,22 @@
     border-radius: 4px;
     box-shadow: 0 0 3px rgba(0,0,0,0.5);
     padding: 8px 16px;
-    position: fixed;top: 0;left: 50%;transform: translateX(-50%);
+    position: fixed;
+    &.position-top{
+      top: 0;
+      left:50%;
+      transform: translateX(-50%);
+    }
+    &.position-bottom{
+      bottom: 0;
+      left:50%;
+      transform: translateX(-50%);
+    }
+    &.position-middle{
+      top: 50%;
+      left:50%;
+      transform: translate(-50%,-50%);
+    }
   }
   .line{
     height: 100%;

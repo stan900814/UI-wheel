@@ -33,10 +33,18 @@ new Vue({
   data: {
     loading1: false,
   },
+  mounted(){
+    this.$toast('测试toast',{
+      autoClose: false,
+      position:'middle',
+      closeButton: {
+        text:'测试',
+        callback:()=>{console.log('我是callback');}
+      }
+    })
+  },
   methods:{
-    showToast(){
-      this.$toast('我是message',{})
-    }
+
   }
 })
 
